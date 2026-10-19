@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Search the planets of our solar system and compare their key physical facts." />
+  <meta name="color-scheme" content="light dark" />
+  <title>Planet | Planetary Facts</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='18' fill='%230a7cff'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    /* Apply the saved (or system) theme before first paint to avoid a flash. */
+    (function () {
+      try {
+        var saved = localStorage.getItem("planet-theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <a class="logo" href="./" aria-label="Planet, home">
+        <img class="logo-img" src="images/logo.png" alt="Planet" width="121" height="53" />
+      </a>
+
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+        <span id="theme-label" class="theme-label">DARK</span>
+        <svg id="theme-icon" class="theme-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"></svg>
+      </button>
+    </header>
+
+    <main id="main">
+      <form id="search-form" class="search" role="search" novalidate>
+        <label for="search-input" class="visually-hidden">Search planet name</label>
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <input
+          id="search-input"
+          name="planet"
+          type="text"
+          placeholder="Search planet name"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          enterkeyhint="search"
+          aria-describedby="search-error"
+        />
+        <span id="search-error" class="search-error" role="alert" hidden>No results</span>
+        <button type="submit" class="btn-search">Search</button>
+      </form>
+
+      <section id="result" class="result" aria-live="polite" aria-busy="true" aria-label="Planet details"></section>
+
+      <section class="facts" aria-labelledby="facts-title">
+        <h2 id="facts-title">Planetary Facts at a Glance</h2>
+        <p class="facts-intro">
+          Below is a comparative table of major planets in our solar system. The data highlights key physical
+          properties used by astronomers and researchers worldwide.
+        </p>
+
+        <p id="table-caption" class="table-caption">Data about the planets of our solar system (Planetary facts taken from NASA)</p>
+
+        <div class="table-wrap">
+          <table id="facts-table" aria-labelledby="table-caption">
+            <thead>
+              <tr>
+                <th scope="col" colspan="2"><span class="visually-hidden">Category</span></th>
+                <th scope="col">Name</th>
+                <th scope="col">Mass (10<sup>24</sup>kg)</th>
+                <th scope="col">Diameter (km)</th>
+              </tr>
+            </thead>
+            <tbody id="facts-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="about">
+        <h2>About</h2>
+        <!-- TODO: replace with the first names of your group members -->
+        <p>Gideon, David, Matthew, Rebecca, Damilare, Mustapha, Zainab, Daramola</p>
+      </div>
+
+      <p class="credits">
+        &copy;2026 Design by <a href="https://amakandukwu.com" target="_blank" rel="noopener">Amaka N</a><br />
+        <!-- TODO: replace GroupName and the link with your group name and repository URL -->
+        Built by <a href="https://saintmattry.github.io/Planet-Group-11/" target="_blank" rel="noopener">Group 11</a>. All rights reserved<br />
+        <a href="https://tsacademyonline.com/" target="_blank" rel="noopener">TSAcademy</a>
+      </p>
+    </footer>
+  </div>
+
+  <noscript>
+    <p class="noscript">This app needs JavaScript to load the planet data.</p>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>
